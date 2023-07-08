@@ -1,0 +1,81 @@
+{
+  "name": "react-webpack-template",
+  "version": "1.0.0",
+  "author": "Ruslan Ivanov <ruslan4432013@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.conf.ts",
+    "build": "yarn clean && cross-env NODE_ENV=production webpack --config config/webpack.prod.conf.ts",
+    "analyzer": "cross-env ANALYZER=true webpack --config config/webpack.prod.conf.ts",
+    "clean": "rimraf ./dist",
+    "prebuild": "yarn clean",
+    "lint-staged": "lint-staged",
+    "lint-staged:tsx": "tsc --noEmit && eslint --fix 'src/**/**/*.{js,ts,tsx}'",
+    "prettier": "prettier --write src/**/**/*.tsx"
+  },
+  "browserslist": [
+    "cover 99.5% in CN"
+  ],
+  "dependencies": {
+    "postcss": "^8.4.21",
+    "postcss-loader": "^7.3.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.3.68",
+    "@types/html-webpack-plugin": "^3.2.6",
+    "@types/node": "^18.15.5",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@types/webpack": "^5.0.0",
+    "@types/webpack-bundle-analyzer": "^4.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.60.1",
+    "autoprefixer": "^10.4.14",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.3",
+    "cssnano": "^6.0.1",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "html-webpack-plugin": "^5.5.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "mini-css-extract-plugin": "^2.7.5",
+    "prettier": "^2.8.6",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "rimraf": "^5.0.1",
+    "sass": "^1.59.3",
+    "sass-loader": "^13.2.1",
+    "style-loader": "^3.3.3",
+    "stylelint": "^15.3.0",
+    "stylelint-config-recommended": "^12.0.0",
+    "swc-loader": "^0.2.3",
+    "terser-webpack-plugin": "^5.3.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2",
+    "webpack": "^5.76.2",
+    "webpack-bundle-analyzer": "^4.8.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "lint-staged": {
+    "src/**/**/*.tsx": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/**/*.tsx": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.tsx": "npm run lint-staged:tsx"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
+  }
+}
