@@ -14,7 +14,7 @@
     "prettier": "prettier --write src/**/**/*.tsx"
   },
   "browserslist": [
-    "cover 99.5% in CN"
+    "last 1 version, not dead, ie >= 11"
   ],
   "dependencies": {
     "postcss": "^8.4.21",
